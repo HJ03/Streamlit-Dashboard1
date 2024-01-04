@@ -3,6 +3,15 @@ from pymongo import MongoClient
 import plotly.express as px
 import pandas as pd
 import pytz
+import pymongo
+from pymongo.errors import ServerSelectionTimeoutError
+
+try:
+    # MongoDB connection
+    client = MongoClient("mongodb://65.2.116.84:27017/")
+    db = client["production"]
+except ServerSelectionTimeoutError as e:
+    print(f"Error connecting to MongoDB: {e}")
 
 st.set_page_config(page_title="Dashboard 3", page_icon=":eagle:", layout="wide")
 
@@ -10,9 +19,7 @@ st.title(":bar_chart: Analysis")
 st.markdown('<style>div.block-container{padding-top:2rem;}', unsafe_allow_html=True)
 
 
-# MongoDB connection
-client = MongoClient("mongodb://65.2.116.84:27017/")
-db = client["production"]
+
 
 # Pipeline for MongoDB aggregation
 pipeline = [
