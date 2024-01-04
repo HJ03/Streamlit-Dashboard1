@@ -1,8 +1,8 @@
 import streamlit as st
+from pymongo import MongoClient
 import plotly.express as px
 import pandas as pd
 import pytz
-from pymongo import MongoClient
 
 st.set_page_config(page_title="Dashboard 3", page_icon=":eagle:", layout="wide")
 
